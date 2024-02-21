@@ -59,7 +59,7 @@ function generateForm() {
 function updateHref() {
   const template = `https://api.whatsapp.com/send?phone=+541126655209&text=QUIERO+MI+ANALISIS+%F0%9F%94%A5%0A%0A${company}+%F0%9F%8F%AD%0A${email}+%E2%9C%89%EF%B8%8F%0A${employees}+%F0%9F%A7%91`;
   const submit = document.getElementById("submit-form");
-  if (company?.trim() != '' && email?.trim() != '' && employees?.trim() != '') submit.setAttribute("href", template);
+  if ((company?.trim() != '' && company != undefined) && (email?.trim() != '' && email != undefined) && (employees?.trim() != '' && employees != undefined)) submit.setAttribute("href", template);
 }
 //utilities
 
@@ -100,7 +100,7 @@ const mailsCollection = db.collection('mails')
 
 //to save data in db
 function addSubmit() {
-  if (company?.trim() != '' && email?.trim() != '' && employees?.trim() != '') {
+  if ((company?.trim() != '' && company != undefined) && (email?.trim() != '' && email != undefined) && (employees?.trim() != '' && employees != undefined)) {
     const data = { empresa: company, empleados: employees, email: email }
     mailsCollection.add(data)
       .then((docRef) => {
